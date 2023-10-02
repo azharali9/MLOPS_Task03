@@ -3,10 +3,10 @@ name: Python CI with Docker
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -19,14 +19,14 @@ jobs:
       -
         name: Build Docker Image
         run: |
-          docker build -t hello-docker .
+          docker build -t docker-created .
       -
         name: Login to Docker Hub
         run: |
-          docker login -u uthpakhi -p dckr_pat_nhEBnTXwdO2RWY7LEsM_Adxugxo
-          docker tag hello-docker uthpakhi/hello-docker
-          docker push uthpakhi/hello-docker
+          docker login -u azharali0564 -p dckr_pat_8g1vdm3YxB6KZH_U-WZUBDt1OUM
+          docker tag docker-created azharali0564/docker-created
+          docker push azharali0564/docker-created
       -  
         name: Run Docker Container
         run: |
-          docker run -d --name my-container -p 8080:80 uthpakhi/hello-docker
+          docker run -d --name my-container -p 8080:80 azharali0564/docker-created
